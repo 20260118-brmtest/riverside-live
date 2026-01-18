@@ -17,7 +17,7 @@ jobs:
       - name: Install
         run: npm install
       - name: Build
-        run: ng build
+        run: npm run build
       - name: Deploy
         run: ng deploy --base-href=/riverside-live/ --name={{ secrets.ANGULAR_CLI_GHPAGES_COMMIT_NAME }} --email=${{ secrets.ANGULAR_CLI_GHPAGES_COMMIT_EMAIL }}
         env:
