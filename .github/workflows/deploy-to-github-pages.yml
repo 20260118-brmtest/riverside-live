@@ -17,8 +17,6 @@ jobs:
           node-version: '24.x'
       - name: Install
         run: npm install
-      - name: Build
-        run: npm run build
       - name: Deploy
         run: npm run deploy -- --base-href=/riverside-live/ --name=COMMIT_NAME --email=COMMIT_EMAIL
         env:
