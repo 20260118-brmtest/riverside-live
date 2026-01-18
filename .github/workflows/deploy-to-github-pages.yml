@@ -1,0 +1,25 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+      - name: Install
+        run: npm install
+      - name: Build
+        run: ng build
+      - name: Deploy
+        run: ng deploy --base-href=/riverside-live/ --name={{ secrets.ANGULAR_CLI_GHPAGES_COMMIT_NAME }} --email=${{ secrets.ANGULAR_CLI_GHPAGES_COMMIT_EMAIL }}
+        env:
+          CI: true
+          GH_TOKEN: ${{ secrets.ANGULAR_CLI_GHPAGES_COMMIT_GH_TOKEN }}
