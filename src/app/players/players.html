@@ -1,0 +1,24 @@
+<h1>Players</h1>
+
+<mat-table [dataSource]="players()">
+  <ng-container matColumnDef="id">
+    <mat-cell *matCellDef="let player">{{ player.id }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <mat-cell *matCellDef="let player">
+      <a [routerLink]="['/player', player.id]">
+        {{ player.name }}
+      </a>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="emaNumber">
+    <mat-cell *matCellDef="let player">
+      @if (player.emaNumber) {
+      <a href="http://mahjong-europe.org/ranking/Players/{{ player.emaNumber }}.html">
+        {{ player.emaNumber }}
+      </a>
+      }
+    </mat-cell>
+  </ng-container>
+  <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+</mat-table>

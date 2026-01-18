@@ -1,0 +1,36 @@
+@media screen and (width >= 900px) {
+  .tables-container {
+    display: flex;
+  }
+
+  mat-table {
+    flex: 1;
+    min-width: 0;
+  }
+
+  mat-table:not(:last-of-type) {
+    border-right: 1px solid var(--mat-sys-on-surface);
+  }
+}
+
+@media screen and (width < 900px) {
+  mat-table:not(:last-of-type) {
+    border-bottom: 1px solid var(--mat-sys-outline);
+  }
+}
+
+mat-row {
+  --mat-table-row-item-container-height: 4vh;
+}
+
+.mat-column-rank {
+  flex: 0 0 15%;
+}
+
+.mat-column-playerName {
+  flex: 1;
+}
+
+.mat-column-score {
+  flex: 0 0 30%;
+}

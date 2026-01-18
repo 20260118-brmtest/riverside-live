@@ -1,0 +1,36 @@
+.centre {
+  margin: 0 auto;
+}
+
+.hanchans {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hanchan-card {
+  border: 3px solid var(--mat-sys-on-surface);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  flex: 1 1 500px;
+  --mat-table-row-item-container-height: 3vh;
+}
+
+.hanchan-title {
+  font-size: large;
+  padding: 5px;
+  border-bottom: 1px solid var(--mat-sys-on-surface);
+}
+
+.mat-column-playerName {
+  min-width: 50%;
+}
+
+.penalty {
+  border-radius: 10px;
+  background-color: #ffe100;
+  color: black;
+  padding: 10px;
+  margin: 10px 0;
+}

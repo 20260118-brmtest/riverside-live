@@ -1,0 +1,43 @@
+<h4>Player {{ playerId() }}</h4>
+<h1>{{ player()?.name }}</h1>
+@if(player()?.emaNumber) {
+<h4>
+  (EMA number
+  <a href="http://mahjong-europe.org/ranking/Players/{{ player()?.emaNumber }}.html">{{
+    player()?.emaNumber
+  }}</a
+  >)
+</h4>
+} @for(penaltySeat of penaltySeats(); track penaltySeat) {
+<div class="penalty">
+  This player received penalties totalling {{ penaltySeat.penalty }} points in round
+  {{ penaltySeat.round }}.
+</div>
+}
+
+<div class="hanchans">
+  @for(hanchan of hanchans(); track hanchan) {
+  <div class="hanchan-card">
+    <div class="hanchan-title">Round {{ hanchan[0].round }}, Table {{ hanchan[0].table }}</div>
+    <div class="hanchan-seats">
+      <mat-table [dataSource]="hanchan">
+        <ng-container matColumnDef="playerId">
+          <mat-cell *matCellDef="let seat">{{ seat.playerId }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="playerName">
+          <mat-cell *matCellDef="let seat"
+            ><a [routerLink]="['/player', seat.playerId]">{{ seat.playerName }}</a></mat-cell
+          >
+        </ng-container>
+        <ng-container matColumnDef="wind">
+          <mat-cell *matCellDef="let seat">{{ seat.wind }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="score">
+          <mat-cell *matCellDef="let seat">{{ seat.score }}</mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let myRowData; columns: hanchanColumnsToDisplay"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+  }
+</div>

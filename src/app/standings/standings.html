@@ -1,0 +1,27 @@
+<div class="standings-container">
+  <h1>Standings after Hanchan {{ roundNumber() }}</h1>
+
+  <div class="tables-container">
+    @for (standingsSection of standingsSections(); track standingsSection) {
+    <mat-table [dataSource]="standingsSection">
+      <ng-container matColumnDef="rank">
+        <mat-cell *matCellDef="let standing">{{ standing.rank }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="playerId">
+        <mat-cell *matCellDef="let standing">{{ standing.playerId }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="playerName">
+        <mat-cell *matCellDef="let standing">
+          <a [routerLink]="['/player', standing.playerId]">
+            {{ standing.playerName }}
+          </a>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="score">
+        <mat-cell *matCellDef="let standing">{{ standing.score }}</mat-cell>
+      </ng-container>
+      <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+    </mat-table>
+    }
+  </div>
+</div>
